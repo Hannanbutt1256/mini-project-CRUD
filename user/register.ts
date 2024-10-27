@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   registerForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
     clearErrors();
 
     // Perform validation
@@ -17,18 +16,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const isPasswordValid = validatePassword(passwordInput.value);
 
     if (isUsernameValid && isEmailValid && isPasswordValid) {
-      // Save data to localStorage
-      const userData = {
+      const newUser = {
         username: usernameInput.value,
         email: emailInput.value,
         password: passwordInput.value,
       };
-      localStorage.setItem("userData", JSON.stringify(userData));
 
-      // Display success message
+      // Retrieve existing users from localStorage or initialize with an empty array
+      const existingUsers = JSON.parse(
+        localStorage.getItem("users") || "[]"
+      ) as Array<{
+        username: string;
+        email: string;
+        password: string;
+      }>;
+
+      // Add the new user to the array
+      existingUsers.push(newUser);
+
+      // Save the updated array back to localStorage
+      localStorage.setItem("users", JSON.stringify(existingUsers));
+
+      // Display success message and redirect
       alert("Successfully registered!");
-
-      // Redirect to login page
       window.location.href = "login.html";
     } else {
       if (!isUsernameValid) showError(usernameInput, "Username is required.");

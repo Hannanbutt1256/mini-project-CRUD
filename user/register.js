@@ -1,26 +1,30 @@
-document.addEventListener("DOMContentLoaded", function () {
-    var registerForm = document.getElementById("registerForm");
-    var usernameInput = document.getElementById("username");
-    var emailInput = document.getElementById("email");
-    var passwordInput = document.getElementById("password");
-    registerForm.addEventListener("submit", function (event) {
+"use strict";
+document.addEventListener("DOMContentLoaded", () => {
+    const registerForm = document.getElementById("registerForm");
+    const usernameInput = document.getElementById("username");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    registerForm.addEventListener("submit", (event) => {
         event.preventDefault();
         clearErrors();
         // Perform validation
-        var isUsernameValid = validateUsername(usernameInput.value);
-        var isEmailValid = validateEmail(emailInput.value);
-        var isPasswordValid = validatePassword(passwordInput.value);
+        const isUsernameValid = validateUsername(usernameInput.value);
+        const isEmailValid = validateEmail(emailInput.value);
+        const isPasswordValid = validatePassword(passwordInput.value);
         if (isUsernameValid && isEmailValid && isPasswordValid) {
-            // Save data to localStorage
-            var userData = {
+            const newUser = {
                 username: usernameInput.value,
                 email: emailInput.value,
                 password: passwordInput.value,
             };
-            localStorage.setItem("userData", JSON.stringify(userData));
-            // Display success message
+            // Retrieve existing users from localStorage or initialize with an empty array
+            const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
+            // Add the new user to the array
+            existingUsers.push(newUser);
+            // Save the updated array back to localStorage
+            localStorage.setItem("users", JSON.stringify(existingUsers));
+            // Display success message and redirect
             alert("Successfully registered!");
-            // Redirect to login page
             window.location.href = "login.html";
         }
         else {
@@ -36,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return username.trim().length > 0;
     }
     function validateEmail(email) {
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailPattern.test(email);
     }
     function validatePassword(password) {
@@ -44,16 +48,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     function showError(input, message) {
         var _a;
-        var error = document.createElement("div");
+        const error = document.createElement("div");
         error.className = "error-message";
         error.textContent = message;
         input.classList.add("input-error");
         (_a = input.parentElement) === null || _a === void 0 ? void 0 : _a.appendChild(error);
     }
     function clearErrors() {
-        var errors = document.querySelectorAll(".error-message");
-        errors.forEach(function (error) { return error.remove(); });
-        var inputs = document.querySelectorAll(".input-error");
-        inputs.forEach(function (input) { return input.classList.remove("input-error"); });
+        const errors = document.querySelectorAll(".error-message");
+        errors.forEach((error) => error.remove());
+        const inputs = document.querySelectorAll(".input-error");
+        inputs.forEach((input) => input.classList.remove("input-error"));
     }
 });

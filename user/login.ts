@@ -7,32 +7,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
     clearErrors();
 
     const emailValid = validateEmail(emailInput.value);
     const passwordValid = validatePassword(passwordInput.value);
 
     if (emailValid && passwordValid) {
-      const storedData = localStorage.getItem("userData");
+      // Retrieve the array of users from localStorage
+      const storedData = localStorage.getItem("users");
 
       if (storedData) {
-        const userData = JSON.parse(storedData);
+        const users = JSON.parse(storedData) as Array<{
+          username: string;
+          email: string;
+          password: string;
+        }>;
 
-        if (
-          emailInput.value === userData.email &&
-          passwordInput.value === userData.password
-        ) {
-          alert("Login successful!");
+        // Find a user with matching email and password
+        const user = users.find(
+          (u) =>
+            u.email === emailInput.value && u.password === passwordInput.value
+        );
+
+        if (user) {
+          alert(`Welcome, ${user.username}!`);
+          localStorage.setItem("loggedInUser", user.email);
 
           // Redirect to the desired page
-          window.location.href = "../student/student.html"; // Change this URL to your preferred page
+          window.location.href = "../student/student.html";
         } else {
           showError(emailInput, "Incorrect email or password.");
           showError(passwordInput, "Incorrect email or password.");
         }
       } else {
-        alert("No user data found. Please register first.");
+        alert("No users found. Please register first.");
       }
     } else {
       if (!emailValid) {
