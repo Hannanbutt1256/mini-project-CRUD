@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Student</title>
+    <link rel="stylesheet" href="styleAdd.css" />
+  </head>
+  <body>
+    <div class="form">
+      <div class="form-container">
+        <!-- Sidebar start -->
+        <div class="form-sidebar">
+          <div class="step active">
+            <div class="circle">1</div>
+            <div class="step-content">
+              <span>Step 1</span>
+              <b>Your info</b>
+            </div>
+          </div>
+          <div class="step">
+            <div class="circle">2</div>
+            <div class="step-content">
+              <span>Step 2</span>
+              <b>Contact Details</b>
+            </div>
+          </div>
+          <div class="step">
+            <div class="circle">3</div>
+            <div class="step-content">
+              <span>Step 3</span>
+              <b>Education</b>
+            </div>
+          </div>
+          <div class="step">
+            <div class="circle">4</div>
+            <div class="step-content">
+              <span>Step 4</span>
+              <b>Review and Submit</b>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1 Start -->
+        <div class="stp step-1">
+          <div class="header">
+            <h1 class="title">Personal Info</h1>
+          </div>
+          <form>
+            <div class="label">
+              <label for="first-name">First Name</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input
+              required
+              type="text"
+              id="first-name"
+              placeholder="e.g. Hannan"
+            />
+            <div class="label">
+              <label for="last-name">Last Name</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input
+              required
+              type="text"
+              id="last-name"
+              placeholder="e.g. Butt"
+            />
+            <div class="label">
+              <label for="email">Email</label>
+              <p class="error">This Field Is Required</p>
+            </div>
+            <input type="email" id="email" placeholder="e.g hannan@gmail.com" />
+            <div class="btns">
+              <button class="next-stp" type="button" id="next-btn-1">
+                Next Step
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Step 1 End -->
+
+        <!-- Step 2 Start -->
+        <div class="stp step-2">
+          <div class="header">
+            <h1 class="title">Contact Details</h1>
+          </div>
+          <form>
+            <div class="label">
+              <label for="phone-number">Phone Number</label>
+              <p class="error">This field is required</p>
+            </div>
+            <input type="tel" id="phone-number" placeholder="0320-0000000" />
+            <div class="label">
+              <label for="address">Address</label>
+              <p class="error">This field is required</p>
+            </div>
+            <input
+              type="text"
+              id="address"
+              placeholder="e.g: 123 A Block Falana Mohalla"
+            />
+            <div class="label">
+              <label for="postal-code">Postal Code</label>
+              <p class="error">This field is required</p>
+            </div>
+            <input type="text" id="postal-code" placeholder="eg: 52210" />
+            <div class="btns">
+              <button class="prev-stp" type="button" id="prev-btn-2">
+                Go Back
+              </button>
+              <button class="next-stp" type="button" id="next-btn-2">
+                Next Step
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Step 2 End -->
+
+        <!-- Step 3 Start -->
+        <div class="stp step-3">
+          <div class="header">
+            <h1 class="title">Education</h1>
+          </div>
+
+          <form>
+            <div class="label">
+              <label for="institute-0">Name of Institute</label>
+              <p class="error">This field is required</p>
+            </div>
+            <input
+              type="text"
+              id="institute"
+              placeholder="e.g: Punjab University Gujranwala Campus"
+            />
+
+            <div class="label">
+              <label for="education-level-0">Level of Education</label>
+              <p class="error">This field is required</p>
+            </div>
+            <select id="education-level">
+              <option value="elementary">Elementary</option>
+              <option value="secondary">Secondary</option>
+              <option value="undergrad">Undergraduate</option>
+              <option value="grad">Graduation</option>
+              <option value="master">Master's</option>
+            </select>
+
+            <div class="label">
+              <label for="grades">Grades</label>
+              <p class="error">This field is required</p>
+            </div>
+            <input type="text" id="grades" placeholder="e.g: Marks or CGPA" />
+
+            <div class="btns">
+              <button class="prev-stp" type="button" id="prev-btn-3">
+                Go Back
+              </button>
+              <button class="next-stp" type="button" id="next-btn-3">
+                Next Step
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Step 3 End -->
+        <!-- Step 4 Start -->
+        <div class="stp step-4">
+          <div class="header">
+            <h1 class="title">Review and Submit</h1>
+          </div>
+          <div class="btns">
+            <button class="prev-stp" type="button" id="prev-btn-4">
+              Go Back
+            </button>
+            <button id="submit-btn" class="btns" type="submit">Submit</button>
+          </div>
+        </div>
+        <!-- Step 4 End -->
+      </div>
+    </div>
+    <script src="./addStudent.js"></script>
+  </body>
+</html>
