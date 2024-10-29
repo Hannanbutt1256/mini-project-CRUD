@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profiles</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=open_in_full"
+    />
+    <link rel="stylesheet" href="styleFetch.css" />
+  </head>
+
+  <body>
+    <h1>User Profiles</h1>
+
+    <table id="user-table" class="table" border="1">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- User data will be dynamically populated here -->
+      </tbody>
+    </table>
+
+    <!-- Modal for User Details -->
+    <div id="userModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Update User Details</h2>
+        <form id="update-form">
+          <label>First Name: <input type="text" id="update-first-name" /></label
+          ><br />
+          <label>Last Name: <input type="text" id="update-last-name" /></label
+          ><br />
+          <label>Email: <input type="text" id="update-email" readonly /></label
+          ><br />
+          <label>Phone: <input type="text" id="update-phone" /></label><br />
+          <label>Address: <input type="text" id="update-address" /></label
+          ><br />
+          <label
+            >Postal Code: <input type="text" id="update-postal-code" /></label
+          ><br />
+          <label>Institute: <input type="text" id="update-institute" /></label
+          ><br />
+          <label
+            >Education Level: <input type="text" id="update-education" /></label
+          ><br />
+          <label>Grades: <input type="text" id="update-grades" /></label><br />
+          <button type="button" id="save-updates-btn">Save Updates</button>
+          <button type="button" id="delete-user-btn">Delete User</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="fetchStudent.js" type="module"></script>
+  </body>
+</html>
