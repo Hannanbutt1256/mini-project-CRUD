@@ -103,14 +103,17 @@ body {
 }
 .table {
   background-color: var(--White);
-  border: none;
   border-collapse: collapse;
+  border-radius: 20px;
+  border: none;
 }
 .table th {
+  border: none;
   padding: 10px 20px;
   color: var(--Marine-blue);
 }
 .table td {
+  border: none;
   padding: 10px 20px;
 }
 .view-btn {

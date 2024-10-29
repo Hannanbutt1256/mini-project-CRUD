@@ -111,6 +111,28 @@ function populateFields() {
   (document.getElementById("grades") as HTMLInputElement).value =
     formData.education.grades;
 }
+function populateReviewStep() {
+  (document.getElementById("review-first-name") as HTMLElement).innerText =
+    formData.personalInfo.firstName;
+  (document.getElementById("review-last-name") as HTMLElement).innerText =
+    formData.personalInfo.lastName;
+  (document.getElementById("review-email") as HTMLElement).innerText =
+    formData.personalInfo.email;
+
+  (document.getElementById("review-phone-number") as HTMLElement).innerText =
+    formData.contactInfo.phoneNumber;
+  (document.getElementById("review-address") as HTMLElement).innerText =
+    formData.contactInfo.address;
+  (document.getElementById("review-postal-code") as HTMLElement).innerText =
+    formData.contactInfo.postalCode;
+
+  (document.getElementById("review-institute") as HTMLElement).innerText =
+    formData.education.institute;
+  (document.getElementById("review-education-level") as HTMLElement).innerText =
+    formData.education.educationLevel;
+  (document.getElementById("review-grades") as HTMLElement).innerText =
+    formData.education.grades;
+}
 
 // Validate each step’s data before proceeding
 function validatePersonalInfo(): boolean {
@@ -282,6 +304,7 @@ document.getElementById("next-btn-2")?.addEventListener("click", () => {
 document.getElementById("next-btn-3")?.addEventListener("click", () => {
   if (validateEducation()) {
     saveDataToLocalStorage();
+    populateReviewStep();
     showStep(currentStep + 1);
     showCircle(currentCircle + 1);
   }

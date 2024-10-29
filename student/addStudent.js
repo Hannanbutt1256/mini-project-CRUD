@@ -78,6 +78,26 @@ function populateFields() {
     document.getElementById("grades").value =
         formData.education.grades;
 }
+function populateReviewStep() {
+    document.getElementById("review-first-name").innerText =
+        formData.personalInfo.firstName;
+    document.getElementById("review-last-name").innerText =
+        formData.personalInfo.lastName;
+    document.getElementById("review-email").innerText =
+        formData.personalInfo.email;
+    document.getElementById("review-phone-number").innerText =
+        formData.contactInfo.phoneNumber;
+    document.getElementById("review-address").innerText =
+        formData.contactInfo.address;
+    document.getElementById("review-postal-code").innerText =
+        formData.contactInfo.postalCode;
+    document.getElementById("review-institute").innerText =
+        formData.education.institute;
+    document.getElementById("review-education-level").innerText =
+        formData.education.educationLevel;
+    document.getElementById("review-grades").innerText =
+        formData.education.grades;
+}
 // Validate each step’s data before proceeding
 function validatePersonalInfo() {
     const firstName = document.getElementById("first-name").value.trim();
@@ -200,6 +220,7 @@ function validateEducation() {
 (_c = document.getElementById("next-btn-3")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
     if (validateEducation()) {
         saveDataToLocalStorage();
+        populateReviewStep();
         showStep(currentStep + 1);
         showCircle(currentCircle + 1);
     }
